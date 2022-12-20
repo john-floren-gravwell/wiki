@@ -8,9 +8,9 @@ A very common use-case for flows is to run one or more queries, check if there w
 
 ![](email1.png)
 
-The [Run Query](/flows/nodes/runquery) node executes a search using the table renderer; for the sake of the example we use `tag=gravwell syslog Appname | stats count by Appname | table Appname count`. We then use the [If](/flows/nodes/if) node to check if `search.Count` is greater than 0. If there were results, the flow will continue on to format and send the email.
+The [Run Query](/flows/nodes/runquery) node executes a search using the table renderer; for the sake of the example we use `tag=gravwell syslog Appname | stats count by Appname | table Appname count`. We then use the [If](/flows/nodes/if) node to check if `search.Count` is greater than 0. If there were results the flow will continue on to format and send the email.
 
-Immediately after the If node, we use the [Get Table Results](/flows/nodes/gettableresults) node to fetch the actual results of the query. Then we use the [Set Variables](inject) node to inject the Gravwell system's hostname into the payload, for our convenience in the next step:
+Immediately after the If node, we use the [Get Table Results](/flows/nodes/gettableresults) node to fetch the actual results of the query. Then we use the [Set Variables](inject) node to inject the Gravwell system's hostname into the payload for use in the next step:
 
 ![](email2.png)
 
